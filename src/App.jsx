@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import MedicoDashboard from "./pages/MedicoDashboard.jsx";
+import HospitalDashboard from "./pages/HospitalDashboard.jsx";
 
 const C = {
   bg: "#F8FAFC",
@@ -1507,6 +1508,10 @@ export default function App() {
     return <MedicoDashboard onLogout={() => setLogado(null)} />;
   }
 
+  if (logado === "hospital") {
+    return <HospitalDashboard onLogout={() => setLogado(null)} />;
+  }
+
   if (logado) {
     return (
       <div
@@ -1524,12 +1529,9 @@ export default function App() {
         }}
       >
         <style>{keyframes}</style>
-        <div style={{ fontSize: 52 }}>
-          {logado === "hospital" ? "🏥" : "⚙️"}
-        </div>
+        <div style={{ fontSize: 52 }}>⚙️</div>
         <h2 style={{ margin: 0, color: C.primary, fontWeight: 800 }}>
-          Bem-vindo ao painel{" "}
-          {logado === "hospital" ? "do hospital" : "admin"}!
+          Bem-vindo ao painel admin!
         </h2>
         <p style={{ color: C.muted }}>Dashboard em construção...</p>
         <button
